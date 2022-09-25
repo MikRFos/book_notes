@@ -1,0 +1,62 @@
+body{
+background-color: #F3E9DB;
+}
+
+h3{
+    text-align: center;
+    padding: 2% 0;
+    color: white;
+    font-family: 'Libre Caslon Text', serif;
+}
+h5{
+    font-family: 'Libre Caslon Text', serif;
+    text-align: center;
+    color: white;
+}
+
+.navbar-brand{
+    font-size: 1.5rem;
+}
+
+.form-banner{
+        background-image: url("../img/mikolaj-DCzpr09cTXY-unsplash.jpg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      padding: 3%;
+}
+
+#title{
+    text-align:center;
+}
+
+#instruction-section{
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 1% 15%
+}
+form, .accordion{
+    margin: 1% 4%;
+    padding: 0 4% 4% 4%;
+}
+
+#book-search-form{
+    text-align: center;
+}
+
+#note-container{
+    background-color: white;
+    padding: 2%, 2%;
+}
+
+.flashes{
+color: red;
+}
+
+thead{
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.notes{
+font-family: 'Roboto Condensed', sans-serif;
+}

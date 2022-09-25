@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 class="display-3 form-banner">My Books</h3>
+<div class="container-fluid">
+    <div class="accordion" id="books-accordion">
+        {% for book in books %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ loop.index }}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{ loop.index }}"
+                        aria-expanded="false" aria-controls="collapse{{ loop.index }}">
+                    {{book.book.title}} by {{book.book.author}}
+                </button>
+            </h2>
+            <div id="collapse{{ loop.index }}" class="accordion-collapse collapse"
+                 aria-labelledby="heading{{ loop.index }}"
+                 data-bs-parent="#books-accordion">
+                <div class="accordion-body">
+                    <div class="list-group">
+                        <p>Notes:</p>
+                        {% if book.notes %}
+                            {% for note in book.notes %}
+                            <a href="{{ url_for('show_notes', username=current_user.username, book_title=book.book.title, id=note.id) }}" class="list-group-item list-group-item-action">Chapter: {{note.chapter}}</a>
+                            {% endfor %}
+                        {% else %}
+                            <p>You have no notes for this book!</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="list-group mt-3">
+                        <p>Saved Quotes:</p>
+                            {% if book.quotes %}
+                            {% for quote in book.quotes %}
+                                <p>"{{quote.quote}}" - {{quote.speaker}}, Page {{quote.page}}</p>
+                            {% endfor %}
+                            {% else %}
+                                <p>You have not saved any quotes for this book!</p>
+                        {% endif %}
+                    </div>
+                    <a href="{{url_for('add_notes', book=book.book.title) }}" class="btn btn-secondary">Add Notes</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <a href="{{url_for('add_book')}}" class="btn btn-info btn-lg mt-2 mx-auto">Add New Book</a>
+    </div>
+
+</div>
+{% endblock %}

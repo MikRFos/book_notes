@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 class="display-3 form-banner">Note Search</h3>
+<form method="post" action="{{ url_for('note_search') }}">
+    {{ form.csrf_token }}
+    <div class="my-3 col-4">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {{ form.note_contains.label(class="form-label")}}
+        {{ form.note_contains(class="form-control")}}
+        {{ form.submit(class="btn btn-info mt-1")}}
+    </div>
+</form>
+{% if results %}
+
+<div class="container-fluid">
+    <div class="accordion" id="notes-accordion">
+        {% for note in results %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ loop.index }}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{ loop.index }}"
+                        aria-expanded="false" aria-controls="collapse{{ loop.index }}">
+                    {% if note.chapter %}
+                    {{note.book.title}} Chapter {{note.chapter}}
+                    {% else %}
+                    {{note.book.title}}
+                    {% endif %}
+                </button>
+            </h2>
+            <div id="collapse{{ loop.index }}" class="accordion-collapse collapse"
+                 aria-labelledby="heading{{ loop.index }}"
+                 data-bs-parent="#notes-accordion">
+                <div class="accordion-body">
+                    <p><strong>Notes:</strong></p>
+                        {% if note.notes %}
+                        {{ note.notes|safe }}
+                        {% else %}
+                        <p>No Notes For This Chapter</p>
+                        {% endif %}
+                    <div class="list-group mt-3">
+                        <p><strong>Saved Quotes:</strong></p>
+                        {% if note.quotes %}
+                        {% for quote in note.quotes %}
+                        <p>"{{quote.quote}}" - {{quote.speaker}}, Page {{quote.page}}</p>
+                        {% endfor %}
+                        {% else %}
+                        <p>You have not saved any quotes for this Chapter!</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="title">
+    <div class="row">
+        <div class="col-12 my-5">
+            <h1 class="display-1">Note Keeping Website.</h1>
+            {% if current_user.is_authenticated %}
+            <div class="row">
+                <div class="col-5">
+                    <a type="button" class="btn btn-primary btn-lg my-5 float-end" href="{{url_for('add_book')}}">
+                        Add a Book
+                    </a>
+                </div>
+                <div class="col-2">
+
+                </div>
+                <div class="col-5">
+                    <a type="button" class="btn btn-primary btn-lg my-5 float-start" href="{{url_for('add_notes')}}">
+                        Add Notes
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <a type="button" class="btn btn-primary btn-lg my-5" href="{{url_for('register_user')}}">
+                Sign-Up to Begin
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<section id="instruction-section">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="display-1">Keep track of the events of your books.</h2>
+        </div>
+    </div>
+    <!--        <div class="col-lg-6 col-md-12">-->
+    <!--            <img src="./static/img/kelly-sikkema&#45;&#45;1_RZL8BGBM-unsplash.jpg" alt="iphone-mockup" class="img-fluid">-->
+    <!--        </div>-->
+    </div>
+</section>
+
+
+{% endblock %}

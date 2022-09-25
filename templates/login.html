@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 class="display-3 form-banner">Login</h3>
+<form method="post" action="{{ url_for('login') }}">
+    {{ form.csrf_token }}
+
+    <div class="my-3 col-4 offset-4">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {{ form.username.label(class="form-label")}}
+        {{ form.username(class="form-control")}}
+    </div>
+    <div class="my-3 col-4 offset-4">
+        {{ form.password.label(class="form-label")}}
+        {{ form.password(class="form-control")}}
+    </div>
+    <div class="my-3 col-4 offset-4">
+        {{ form.login(class="btn btn-primary")}}
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-banner">
+    <h3 class="display-3">{{username|title }}'s Notes for <em>{{ notes.book.title }}</em></h3>
+    {% if notes.chapter %}
+    <h5 class="display-5">Chapter {{ notes.chapter }}</h5>
+    {% endif %}
+</div>
+<div class="container p-5 notes" id="note-container">
+    <p>{{notes.notes|safe }}</p>
+    {% if current_user.is_authenticated and current_user.id == orig_user.id %}
+    <a type="button" href="{{url_for('edit_notes', note_id=notes.id) }}" class="btn btn-primary float-start">Edit Notes</a>
+    <a type="button"  class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#confirmModal">Delete Notes</a>
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Are You Sure</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        This will delete this group of notes INCLUDING the associated quotes.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Do Not Delete</button>
+        <a type="button" class="btn btn-primary" href="{{url_for('delete_notes', note_id=notes.id) }}">Confirm</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif  %}
+</div>
+
+{% endblock %}
