@@ -9,14 +9,15 @@ import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", "sqlite:///book_notes.db").replace("postgres://", "postgresql://", 1)
 db.init_app(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 ckeditor = CKEditor(app)
 
