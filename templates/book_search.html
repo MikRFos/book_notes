@@ -5,7 +5,7 @@
     <form method="POST" action="{{ url_for('add_book') }}" id="book-search-form">
         {{ form.csrf_token }}
         <div row>
-            <div class="col-4 mb-3 offset-lg-4">
+            <div class="my-3 col-lg-4 col-md-6 col-sm-12 offset-lg-4 offset-md-3">
                 {{form.title.label(class_='form-label')}}
                 {{ form.title(class_='form-control') }}
                 {% with messages = get_flashed_messages() %}
@@ -18,7 +18,7 @@
                 {% endif %}
                 {% endwith %}
             </div>
-            <div class="col-2 mb-3 offset-lg-5">
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3 offset-lg-5 offset-md-4 offset-sm-3">
                 {{form.author.label(class_='form-label')}}
                 {{ form.author(class_='form-control') }}
             </div>

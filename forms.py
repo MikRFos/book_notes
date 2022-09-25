@@ -10,25 +10,25 @@ class Notes(FlaskForm):
     key_words = StringField("Keywords")
     notes = CKEditorField("Notes*", validators=[DataRequired()])
 
-    quote1 = StringField("Quote")
-    quote1_speaker = StringField("Speaker")
-    quote1_page = IntegerField("Page#", validators=[Optional()])
+    quote1 = StringField("Quote:")
+    quote1_speaker = StringField("Speaker:")
+    quote1_page = IntegerField("Page#:", validators=[Optional()])
 
-    quote2 = StringField("Quote")
-    quote2_speaker = StringField("Speaker")
-    quote2_page = IntegerField("Page#", validators=[Optional()])
+    quote2 = StringField("Quote:")
+    quote2_speaker = StringField("Speaker:")
+    quote2_page = IntegerField("Page#:", validators=[Optional()])
 
-    quote3 = StringField("Quote")
-    quote3_speaker = StringField("Speaker")
-    quote3_page = IntegerField("Page#", validators=[Optional()])
+    quote3 = StringField("Quote:")
+    quote3_speaker = StringField("Speaker:")
+    quote3_page = IntegerField("Page#:", validators=[Optional()])
 
-    quote4 = StringField("Quote")
-    quote4_speaker = StringField("Speaker")
-    quote4_page = IntegerField("Page#", validators=[Optional()])
+    quote4 = StringField("Quote:")
+    quote4_speaker = StringField("Speaker:")
+    quote4_page = IntegerField("Page#:", validators=[Optional()])
 
-    quote5 = StringField("Quote")
-    quote5_speaker = StringField("Speaker")
-    quote5_page = IntegerField("Page#", validators=[Optional()])
+    quote5 = StringField("Quote:")
+    quote5_speaker = StringField("Speaker:")
+    quote5_page = IntegerField("Page#:", validators=[Optional()])
 
     submit = SubmitField()
 

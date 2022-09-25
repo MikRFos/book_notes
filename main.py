@@ -1,5 +1,7 @@
 from flask import Flask, render_template, url_for, redirect, flash, request
 from flask_ckeditor import CKEditor
+from sqlalchemy import func
+
 from model import db, User, Book, Note, Quote, association_table
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -15,6 +17,7 @@ db.init_app(app)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
+login_manager.login_view = "login"
 
 with app.app_context():
     db.create_all()
@@ -36,7 +39,7 @@ def home():
 def register_user():
     form = forms.RegistryForm()
     if form.validate_on_submit():
-        if User.query.filter_by(username=form.username.data).first():
+        if User.query.filter(func.lower(User.username) == func.lower(form.username.data)).first():
             # User already Exists
             flash("Username Taken")
         else:
@@ -45,7 +48,6 @@ def register_user():
                 new_user = User(username=form.username.data, password=hashed_salted_pass)
                 db.session.add(new_user)
                 db.session.commit()
-
                 login_user(new_user)
 
                 return redirect(url_for("add_book"))
@@ -56,7 +58,7 @@ def register_user():
 def login():
     form = forms.LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
+        user = User.query.filter(func.lower(User.username) == func.lower(form.username.data)).first()
         if user:
             if check_password_hash(user.password, form.password.data):
                 login_user(user)
@@ -193,6 +195,7 @@ def book_clicked(title, author):
 
 
 @app.route("/booklist")
+@login_required
 def book_list():
     book_data = []
     books = current_user.books

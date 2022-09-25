@@ -4,7 +4,7 @@
 <form method="post" action="{{ url_for('login') }}">
     {{ form.csrf_token }}
 
-    <div class="my-3 col-4 offset-4">
+    <div class="my-3 col-lg-4 col-md-6 col-sm-12 offset-lg-4 offset-md-3">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul class=flashes>
@@ -17,11 +17,11 @@
         {{ form.username.label(class="form-label")}}
         {{ form.username(class="form-control")}}
     </div>
-    <div class="my-3 col-4 offset-4">
+    <div class="my-3 col-lg-4 col-md-6 col-sm-12 offset-lg-4 offset-md-3">
         {{ form.password.label(class="form-label")}}
         {{ form.password(class="form-control")}}
     </div>
-    <div class="my-3 col-4 offset-4">
+    <div class="my-3 col-lg-4 col-md-6 col-sm-12 offset-lg-4 offset-md-3">
         {{ form.login(class="btn btn-primary")}}
     </div>
 </form>

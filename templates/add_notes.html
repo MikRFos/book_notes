@@ -5,13 +5,13 @@
     <form method="POST" action="{{ url_for('add_notes') }}">
         {{ form.csrf_token }}
         <div row>
-        <div class="col-4 mb-3">
+        <div class="col-lg-6 col-md-12  mb-3">
             {{ form.book.label(class_='form-label') }}
             {{ form.book(class_='form-control form-select', list='datalistOptions', placeholder='Select Book') }}
         </div>
             </div>
         <div row>
-            <div class="col-3 mb-3">
+            <div class="col-lg-3 col-sm-6  mb-3">
                 {{ form.chapter.label(class_='form-label') }} {{ form.chapter(class_='form-control input-sm') }}
 <!--                {{ form.key_words.label(class_='form-label') }} {{ form.key_words(class_='form-control input-sm', placeholder="Separate with comma") }}-->
             </div>
@@ -20,46 +20,46 @@
             {{ form.notes.label(class='form-label') }}
             {{ form.notes() }}
         </div>
-        <h4 class="mb-3">Noteworthy Quotes:</h4>
-        <div class="input-group row">
-            <span class="input-group-text col-1"  >{{form.quote1.label}}</span>
-            {{ form.quote1(class_='form-control col-5') }}
-            <span class="input-group-text col-1">{{form.quote1_speaker.label}}</span>
-            {{ form.quote1_speaker(class_='col-2') }}
-            <span class="input-group-text col-1">{{form.quote1_page.label}}</span>
-            {{ form.quote1_page(class_='col-1') }}
+        <h4 class="mb-md-3 mb-2">Noteworthy Quotes:</h4>
+        <div class="input-group row my-lg-0 my-md-2 mb-5">
+            <span class=" col-lg-1 col-md-2  col-sm-3"  >{{form.quote1.label}}</span>
+            {{ form.quote1(class_='col-lg-6 col-md-10') }}
+            <span class=" col-lg-1 col-md-2 col-sm-3">{{form.quote1_speaker.label}}</span>
+            {{ form.quote1_speaker(class_='col-lg-2 col-md-6') }}
+            <span class=" col-lg-1 col-md-2 col-sm-12">{{form.quote1_page.label}}</span>
+            {{ form.quote1_page(class_='col-lg-1 col-md-2 col-sm-4') }}
         </div>
-        <div class="input-group row">
-            <span class="input-group-text col-1"  >{{form.quote2.label}}</span>
-            {{ form.quote2(class_='form-control col-5') }}
-            <span class="input-group-text col-1">{{form.quote2_speaker.label}}</span>
-            {{ form.quote2_speaker(class_='col-2') }}
-            <span class="input-group-text col-1">{{form.quote2_page.label}}</span>
-            {{ form.quote2_page(class_='col-1') }}
+        <div class="input-group row my-lg-0 my-md-2 my-5">
+            <span class=" col-lg-1 col-md-2  col-sm-3"  >{{form.quote2.label}}</span>
+            {{ form.quote2(class_='col-lg-6 col-md-10') }}
+            <span class=" col-lg-1 col-md-2 col-sm-3">{{form.quote2_speaker.label}}</span>
+            {{ form.quote2_speaker(class_='col-lg-2 col-md-6') }}
+            <span class=" col-lg-1 col-md-2 col-sm-12">{{form.quote2_page.label}}</span>
+            {{ form.quote2_page(class_='col-lg-1 col-md-2 col-sm-4') }}
         </div>
-        <div class="input-group row">
-            <span class="input-group-text col-1"  >{{form.quote3.label}}</span>
-            {{ form.quote3(class_='form-control col-5') }}
-            <span class="input-group-text col-1">{{form.quote3_speaker.label}}</span>
-            {{ form.quote3_speaker(class_='col-2') }}
-            <span class="input-group-text col-1">{{form.quote3_page.label}}</span>
-            {{ form.quote3_page(class_='col-1') }}
+        <div class="input-group row my-lg-0 my-md-2 my-5">
+            <span class=" col-lg-1 col-md-2 col-sm-3"  >{{form.quote3.label}}</span>
+            {{ form.quote3(class_='col-lg-6 col-md-10') }}
+            <span class=" col-lg-1 col-md-2 col-sm-3">{{form.quote3_speaker.label}}</span>
+            {{ form.quote3_speaker(class_='col-lg-2 col-md-6') }}
+            <span class=" col-lg-1 col-md-2 col-sm-12">{{form.quote3_page.label}}</span>
+            {{ form.quote3_page(class_='col-lg-1 col-md-2 col-sm-4') }}
         </div>
-        <div class="input-group row">
-            <span class="input-group-text col-1"  >{{form.quote4.label}}</span>
-            {{ form.quote4(class_='form-control col-5') }}
-            <span class="input-group-text col-1">{{form.quote4_speaker.label}}</span>
-            {{ form.quote4_speaker(class_='col-2') }}
-            <span class="input-group-text col-1">{{form.quote4_page.label}}</span>
-            {{ form.quote4_page(class_='col-1') }}
+        <div class="input-group row my-lg-0 my-md-2 my-5">
+            <span class=" col-lg-1 col-md-2 col-sm-3"  >{{form.quote4.label}}</span>
+            {{ form.quote4(class_='col-lg-6 col-md-10') }}
+            <span class=" col-lg-1 col-md-2 col-sm-3">{{form.quote4_speaker.label}}</span>
+            {{ form.quote4_speaker(class_='col-lg-2 col-md-6') }}
+            <span class=" col-lg-1 col-md-2 col-sm-12">{{form.quote4_page.label}}</span>
+            {{ form.quote4_page(class_='col-lg-1 col-md-2 col-sm-4') }}
         </div>
-        <div class="input-group row mb-3">
-            <span class="input-group-text col-1"  >{{form.quote5.label}}</span>
-            {{ form.quote5(class_='form-control col-5') }}
-            <span class="input-group-text col-1">{{form.quote5_speaker.label}}</span>
-            {{ form.quote5_speaker(class_='col-2') }}
-            <span class="input-group-text col-1">{{form.quote5_page.label}}</span>
-            {{ form.quote5_page(class_='col-1') }}
+        <div class="input-group row my-lg-0 my-md-2 my-sm-5 my-5">
+            <span class=" col-lg-1 col-md-2 col-sm-3"  >{{form.quote5.label}}</span>
+            {{ form.quote5(class_='col-lg-6 col-md-10') }}
+            <span class=" col-lg-1 col-md-2 col-sm-3">{{form.quote5_speaker.label}}</span>
+            {{ form.quote5_speaker(class_='col-lg-2 col-md-6') }}
+            <span class=" col-lg-1 col-md-2 col-sm-12">{{form.quote5_page.label}}</span>
+            {{ form.quote5_page(class_='col-lg-1 col-md-2 col-sm-4') }}
         </div>
         <div>
             {{ form.submit(class_='btn btn-primary btn-lg') }}
