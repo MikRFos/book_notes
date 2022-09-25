@@ -148,6 +148,7 @@ def edit_notes(note_id):
             print("list over")
     return render_template("add_notes.html", form=form)
 
+
 @app.route("/delete/<note_id>", methods=["GET", "POST"])
 @login_required
 def delete_notes(note_id):
@@ -158,6 +159,7 @@ def delete_notes(note_id):
     db.session.delete(note)
     db.session.commit()
     return redirect(url_for("book_list"))
+
 
 @app.route("/add_book", methods=["GET", "POST"])
 @login_required
